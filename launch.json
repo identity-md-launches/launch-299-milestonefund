@@ -1,0 +1,22 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "LaunchToken",
+    "name": "Tranche",
+    "symbol": "TRNC",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "MilestoneFund",
+      "constructorArgs": ["$token"]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Sepolia (11155111) project-factory launch. LaunchToken is defined in src/LaunchToken.sol. MilestoneFund is defined in src/MilestoneFund.sol and its nonpayable constructor stores the launch token as its immutable working currency. It requires no initial token balance or initialization calls and has no owner, admin or upgrade path. The factory supplies the LP and MerkleDistributor. The pool pairs TRNC with native ETH and has no hook; initialPrice is decimal sqrtPriceX96, with the effective opening price derived from the pinned policy when initialMarketCapWei is specified. Deposits require ERC-20 approval. A majority across multiple wallets can approve tranches, including wallets controlled by a creator; each release requires its own three-day grace period for backers to rage-quit. Services handle policy, signed artifact linkage, admission and deployment."
+}
